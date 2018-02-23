@@ -23,7 +23,7 @@ task main()
 		|*                                      ROBOTC on VEX 2.0 Cortex                                      *|
 		|*                                                                                                    *|
 		|*  This program uses a single joystick, either right or left (this is configurable below) to drive   *|
-		|*  the robot. Denton ACES uses the leftMotor configuration for 2017 BEST Crossfire.  								*|
+		|*  the robot. Denton ACES uses the leftMotor configuration for 2017 BEST Crossfire.  					    	*|
 		|*																																																		*|
 		|*	The sample code has also been adjusted to include a deadband to limit motor 											*|
 		|*	whining during operation. 																																				*|
@@ -144,21 +144,21 @@ task main()
 		|*        range or it may never run.                                                                  *|
 		|*                                                                                                    *|
 		|*    MOTORS & SENSORS:                                                                               *|
-		|*    [I/O Port]          [Name]              [Type]                [Description]                     *|
-		|*    Motor   - Port 2    rightMotor          VEX 3-wire module     Right side motor                  *|
-		|*    Motor   - Port 3    leftMotor           VEX 3-wire module     Left side motor                   *|
-		|*    Digital - Port 9,10 sonarSensor         VEX Sonar Sensor      Front mounted, facing forward     *|
+		|*    [I/O Port]         		[Name]              [Type]                [Description]                   *|
+		|*    Motor   - Port 9    	rightMotor          VEX 3-wire module     Right side motor                *|
+		|*    Motor   - Port 8    	leftMotor           VEX 3-wire module     Left side motor                 *|
+		|*    Digital - Port 9,10 	sonarSensor         VEX Sonar Sensor      Front mounted, facing forward   *|
 		\*-----------------------------------------------------------------------------------------------4246-*/
 
 	if (SensorValue(sonarSensor) > 20  || SensorValue(sonarSensor) == -1)		//Loop while robot's Ultrasonic sensor is further than 20 inches away from an object
 	{                                                                       //|| (or) it is '-1'.  (-1 is the value returned when nothing is in it's visable range)
-		motor[rightMotor] = 127;			//Motor on port2 is run at full (127) power forward
-		motor[leftMotor]  = 127;			//Motor on port3 is run at full (127) power forward
+		motor[rightMotor] = 127;			//Motor on port9 is run at full (127) power forward
+		motor[leftMotor]  = 127;			//Motor on port8 is run at full (127) power forward
 		}
 		else
 		{
-			motor[rightMotor] = 0;
-			motor[leftMotor]  = 0;
+			motor[rightMotor] = 0;			//Motor on port9 stops
+			motor[leftMotor]  = 0;			//Motor on port8 stops
 		}
 	}
 
